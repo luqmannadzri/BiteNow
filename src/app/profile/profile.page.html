@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+        Email: 
+      </ion-col>
+
+      <ion-col text-center>
+       {{userEmail}}
+      </ion-col>
+
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col>
+        First Name: 
+      </ion-col>
+
+      <ion-col text-center>
+    
+      </ion-col>
+
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col>
+        Last Name: 
+      </ion-col>
+
+      <ion-col text-center>
+    
+      </ion-col>
+
+      <ion-col></ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+
+</ion-content>
+<ion-footer (click)="logout()">
+  <ion-toolbar color="secondary">
+    <ion-title text-center>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer>

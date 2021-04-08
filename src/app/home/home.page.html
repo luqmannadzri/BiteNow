@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      BiteNow
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <img src="assets/img/logo.png" class="logo">
+        <ion-button [routerLink]="['/login']" expand="block">Log In</ion-button>
+        <ion-button [routerLink]="['/register']" expand="block">Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

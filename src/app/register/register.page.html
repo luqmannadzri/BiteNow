@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
+
+    <ion-item color="#ffffff">
+      <ion-label position="floating" color="light">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message"
+          *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item color="#ffffff">
+      <ion-label position="floating" color="light">Password</ion-label>
+      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message"
+          *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item color="#ffffff">
+      <ion-label position="floating" color="light">First Name</ion-label>
+      <ion-input type="text" id="firstname"></ion-input>
+    </ion-item>
+
+    <ion-item color="#ffffff">
+      <ion-label position="floating" color="light">Last Name</ion-label>
+      <ion-input type="text" id="lastname"></ion-input>
+    </ion-item>
+
+    <ion-item color="#ffffff">
+      <ion-label position="floating" color="light">Phone Number</ion-label>
+      <ion-input type="tel" id="phone"></ion-input>
+    </ion-item>
+
+
+
+    <ion-button expand="block" style="margin-top: 10%; margin-left: 10%; margin-right: 10%;" color ="primary" class="submit-btn" type="submit" [disabled]="!validations_form.valid">Register</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
+  </form>
+  <p style="margin-left: 2.5%;" class="go-to-login">
+    
+    Already have an account? <a (click)="goLoginPage()">Try to Log In.</a>
+  
+  </p>
+</ion-content>
