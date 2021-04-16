@@ -48,6 +48,9 @@ export class RegisterPage implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
+      firstname: '',
+      lastname: '',
+      phone: '',
     });
   }
 
@@ -67,6 +70,9 @@ export class RegisterPage implements OnInit {
         {
           id: this.firestore.createId(),
           email: value.email,
+          fname: value.firstname,
+          lname: value.lastname,
+          phone: value.phone,
           firstname: 'hiaaaa'
 
         }
