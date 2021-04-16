@@ -1,4 +1,19 @@
 ion-content.background{
-    --background: url(../../assets/img/background.png) 0 0/100% 100% no-repeat;
+  --background: url(../../assets/img/background.png) 0 0/100% 100% no-repeat;
+
+}
+  
+  p{
+    color:white;
   }
+
+  ion-input{
+    color:white;
+  
+  }
+  
+  .error-message{
+    color:white;
+  }
+  
   

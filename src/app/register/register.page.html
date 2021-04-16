@@ -5,6 +5,16 @@
 </ion-header>
 
 <ion-content padding class="background">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <img src="assets/img/logo.png" class="logo">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
 
     <ion-item color="#ffffff">
@@ -33,24 +43,26 @@
       </ng-container>
     </div>
 
-    <ion-item color="#ffffff">
+    <!-- <ion-item color="#ffffff">
       <ion-label position="floating" color="light">First Name</ion-label>
-      <ion-input type="text" id="firstname"></ion-input>
+      <ion-input type="text" formControlName="firstname"></ion-input>
     </ion-item>
 
     <ion-item color="#ffffff">
       <ion-label position="floating" color="light">Last Name</ion-label>
-      <ion-input type="text" id="lastname"></ion-input>
+      <ion-input type="text" formControlName="lastname"></ion-input>
     </ion-item>
 
     <ion-item color="#ffffff">
       <ion-label position="floating" color="light">Phone Number</ion-label>
-      <ion-input type="tel" id="phone"></ion-input>
-    </ion-item>
+      <ion-input type="tel" formControlName="phone"></ion-input>
+    </ion-item> -->
 
 
 
-    <ion-button expand="block" style="margin-top: 10%; margin-left: 10%; margin-right: 10%;" color ="primary" class="submit-btn" type="submit" [disabled]="!validations_form.valid">Register</ion-button>
+    <ion-button expand="block" style="margin-top: 10%; margin-left: 10%; margin-right: 10%;" 
+    color ="primary" class="submit-btn" type="submit" [disabled]="!validations_form.valid">Register</ion-button><br>
+
     <label class="error-message">{{errorMessage}}</label>
     <label class="success-message">{{successMessage}}</label>
   </form>

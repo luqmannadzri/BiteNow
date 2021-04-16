@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, EmailValidator } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
+import { AngularFirestore } from '@angular/fire/firestore';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-register',
@@ -29,8 +31,12 @@ export class RegisterPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    public firestore: AngularFirestore
+  ) { 
+
+
+  }
 
   ngOnInit() {
     this.validations_form = this.formBuilder.group({
@@ -56,11 +62,38 @@ export class RegisterPage implements OnInit {
         this.errorMessage = err.message;
         this.successMessage = "";
       })
+
+      this.firestore.collection('People').add(
+        {
+          id: this.firestore.createId(),
+          email: this.validations_form , 
+          firstname: 'hi',
+         
+        }
+      )
+
+
   }
 
   goLoginPage() {
-    this.navCtrl.navigateBack('');
+    this.navCtrl.navigateBack('/login');
+  }
+
+  addItem() {
+    this.firestore.collection('People').add(
+      {
+        id: this.firestore.createId(),
+        firstname: 'hi',
+       
+      }
+    )
+    // .then(response => {
+    //   this.nameValue = this.placeValue = '';
+    // }).catch(error => {
+    //   console.log(error);
+    // });
   }
 
 
 }
+

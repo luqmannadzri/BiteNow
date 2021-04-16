@@ -1,4 +1,30 @@
 ion-content.background{
     --background: url(../../assets/img/background.png) 0 0/100% 100% no-repeat;
-  }
+
   
+  
+    // --overflow: hidden;
+    // overflow: auto;
+    // &::-webkit-overflow-scrolling {
+    //   display: none;
+    // }
+
+
+  }
+
+ion-input{
+  color:white;
+
+}
+
+
+p{
+  color:white;
+}
+
+.error-message{
+  color:white;
+}
+
+
+

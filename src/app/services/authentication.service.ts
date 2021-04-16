@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthenticateService {
 
   constructor(
-    private afAuth: AngularFireAuth
-  ) { }
+    private afAuth: AngularFireAuth,
+    public firestore: AngularFirestore
+
+  ) {
+
+
+   }
 
   registerUser(value) {
     return new Promise<any>((resolve, reject) => {
