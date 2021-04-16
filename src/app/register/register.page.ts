@@ -33,7 +33,7 @@ export class RegisterPage implements OnInit {
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
     public firestore: AngularFirestore
-  ) { 
+  ) {
 
 
   }
@@ -66,9 +66,9 @@ export class RegisterPage implements OnInit {
       this.firestore.collection('People').add(
         {
           id: this.firestore.createId(),
-          email: this.validations_form , 
-          firstname: 'hi',
-         
+          email: this.validations_form.value.email,
+          firstname: 'hiaaaa'
+
         }
       )
 
@@ -84,7 +84,7 @@ export class RegisterPage implements OnInit {
       {
         id: this.firestore.createId(),
         firstname: 'hi',
-       
+
       }
     )
     // .then(response => {
@@ -96,4 +96,3 @@ export class RegisterPage implements OnInit {
 
 
 }
-
