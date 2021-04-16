@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +11,15 @@ import { AuthenticateService } from '../services/authentication.service';
 export class ProfilePage implements OnInit {
 
   userEmail: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  uid: string;
 
   constructor(
     private navCtrl: NavController,
-    private authService: AuthenticateService
+    private authService: AuthenticateService,
+    public firestore: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -22,13 +28,23 @@ export class ProfilePage implements OnInit {
       console.log('res', res);
       if (res !== null) {
         this.userEmail = res.email;
+
+        //get data from firestore based on current required
+        this.firestore.collection("People").doc(res.uid).get()
+        .toPromise()
+        .then(res => {
+          this.firstName = res.data()['fname'];
+          this.lastName = res.data()['lname'];
+          this.phone = res.data()['phone'];
+          console.log("nahh email",res.data()['fname'])
+        })
+
       } else {
         this.navCtrl.navigateBack('');
       }
     }, err => {
       console.log('err', err);
     })
-
   }
 
   logout() {

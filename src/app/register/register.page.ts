@@ -58,6 +58,17 @@ export class RegisterPage implements OnInit {
     this.authService.registerUser(value)
       .then(res => {
         console.log(res);
+
+        this.firestore.collection('People').doc(res.user.uid).set(
+          {
+            id: this.firestore.createId(),
+            email: value.email,
+            fname: value.firstname,
+            lname: value.lastname,
+            phone: value.phone,
+
+          }
+        )
         this.errorMessage = "";
         this.successMessage = "Your account has been created. Please log in.";
       }, err => {
@@ -66,17 +77,7 @@ export class RegisterPage implements OnInit {
         this.successMessage = "";
       })
 
-      this.firestore.collection('People').add(
-        {
-          id: this.firestore.createId(),
-          email: value.email,
-          fname: value.firstname,
-          lname: value.lastname,
-          phone: value.phone,
-          firstname: 'hiaaaa'
 
-        }
-      )
 
 
   }
