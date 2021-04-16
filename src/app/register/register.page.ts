@@ -66,7 +66,7 @@ export class RegisterPage implements OnInit {
       this.firestore.collection('People').add(
         {
           id: this.firestore.createId(),
-          email: this.validations_form.value.email,
+          email: value.email,
           firstname: 'hiaaaa'
 
         }
