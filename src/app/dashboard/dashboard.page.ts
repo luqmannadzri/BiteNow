@@ -16,6 +16,7 @@ export class DashboardPage implements OnInit {
   restName: string;
   restThumbnail: string;
   restDescription: string;
+  // @Input() postDatas: any [];
 
   constructor(
     private navCtrl: NavController,
@@ -41,29 +42,26 @@ export class DashboardPage implements OnInit {
       console.log('err', err);
     })
 
+    //Get Restaurants
     this.firestore.collection("Restaurant")
     .get()
     .toPromise()
     .then(function(querySnapshot) {
+        var restaurants = [];
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            // this.restName = res.data()['restName'];
-            console.log(doc.data()['restName']);
+            // console.log(doc.id, " => ", doc.data());
+            restaurants.push(doc.data());
+            // this.postDatas = restaurants;
+            // console.log(doc.data()['restName']);
         });
+        console.log(restaurants);
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
-    // snapshot.forEach(doc => {
-    //   console.log("nanhhhhhhh",doc.data())
-    // })
 
-    // this.firestore.collection("Restaurant").add({
-    //   restName: 'Aniq',
-    //   restDesc: 'Fakhrul',
-    //   restThumbnail: 'test'
-    // });
+
 
   }
 
