@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -18,7 +19,7 @@ export class DashboardPage implements OnInit {
     private route: Router
   ) { }
 
-  nextpage() {
+  profile() {
     this.route.navigate(['/profile']);
   }
 
@@ -37,14 +38,4 @@ export class DashboardPage implements OnInit {
 
   }
 
-  logout() {
-    this.authService.logoutUser()
-      .then(res => {
-        console.log(res);
-        this.navCtrl.navigateBack('');
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
 }

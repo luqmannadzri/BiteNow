@@ -29,14 +29,14 @@ export class ProfilePage implements OnInit {
       if (res !== null) {
         this.userEmail = res.email;
 
-        //get data from firestore based on current required
+        //get data from firestore based on current required user
         this.firestore.collection("People").doc(res.uid).get()
-        .toPromise()
+        .toPromise() //guna utk enable pakai then
         .then(res => {
           this.firstName = res.data()['fname'];
           this.lastName = res.data()['lname'];
           this.phone = res.data()['phone'];
-          console.log("nahh email",res.data()['fname'])
+          console.log("nahh email",res.data()['fname']) //debug
         })
 
       } else {

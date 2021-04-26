@@ -6,24 +6,33 @@
 
 <ion-content class="title">
 
-
-
     <ion-row class="logo">
 
         <img src="assets/img/menu.png" class="menu">
 
-        <ion-button color="light" size="small" (click)="nextpage()">Profile</ion-button>
+        <ion-button size="small" (click)="profile()">Profile</ion-button>
 
-
-      
     </ion-row>
 
+    <ion-row>
 
-<ion-row>
+      <h1>Restaurant</h1>
 
-  <h1>Restaurant</h1>
+    </ion-row>
 
-</ion-row>
+    <ion-item class="restaurant" lines="none" >
+
+      <ion-thumbnail slot="start">
+        
+        <img src="assets/img/miraj.PNG">
+
+      </ion-thumbnail>
+
+      <ion-label>Miraj</ion-label>
+
+      <ion-button fill="solid" >VIEW</ion-button>
+      
+    </ion-item>
 
 
 </ion-content>

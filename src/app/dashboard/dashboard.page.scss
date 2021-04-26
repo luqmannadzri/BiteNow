@@ -1,11 +1,22 @@
+
 ion-content{
 
     --ion-background-color:#141a26;
 }
 
-.logo{
 
-    --ion-background-color:#141a26;
+.logo{
+    
+
+    ion-button{
+        --background:#354055; 
+        --border-color:  #d92528;
+        --border-radius: 9px;
+        --border-width: 5px;
+        --background-hover: #d92528;
+        --background-hover-opacity: 100%;
+      
+    }
 
 }
 
@@ -19,15 +30,47 @@ img {
       color: #d92528;
       padding-left: 20px;
       padding-top: 0px;
+     
   }
 
-  ion-avatar{
+  ion-item.restaurant{
 
-    width: 50%;
-    height: auto;
-    padding: 5px;
-  
+
+    ion-label{
+
+        --color: white;
+
+    }
+
+    ion-thumbnail{
+        --size: 100;
+        --border-radius: 15px;
+       
+    }
+
+    img{
+        height:auto;
+        width: auto;
+    }
+
+    ion-button{
+        --background:#354055; 
+        --border-color:  #d92528;
+        --border-radius: 9px;
+        --border-width: 5px;
+        --background-hover: #d92528;
+        --background-hover-opacity: 100%;
+        
+      
+    }
+
+
+
+
+ 
+
   }
+ 
 
 
   
