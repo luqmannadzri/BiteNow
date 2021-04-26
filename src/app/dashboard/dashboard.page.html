@@ -20,18 +20,18 @@
 
     </ion-row>
 
-    <ion-item class="restaurant" lines="none" >
+    <ion-item *ngFor="let restaurants of restList" class="restaurant" lines="none" >
 
       <ion-thumbnail slot="start">
-        
+
         <img src="assets/img/miraj.PNG">
 
       </ion-thumbnail>
 
-      <ion-label>Miraj</ion-label>
+      <ion-label>{{restaurants.restName}}</ion-label>
 
       <ion-button fill="solid" >VIEW</ion-button>
-      
+
     </ion-item>
 
 
