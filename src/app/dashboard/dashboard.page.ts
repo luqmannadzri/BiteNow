@@ -12,12 +12,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class DashboardPage implements OnInit {
 
- 
+  userEmail: string;
   restName: string;
   restThumbnail: string;
   restDescription: string;
-  public restList: Array<any> = [];
-
+  public restList: Array<any>;
 
   constructor(
     private navCtrl: NavController,
@@ -32,27 +31,38 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
 
+    this.authService.userDetails().subscribe(res => {
+      console.log('res', res);
+      if (res !== null) {
+        this.userEmail = res.email;
 
-    //Get Restaurants
-    this.firestore.collection("Restaurant")
-    .get()
-    .toPromise()
-    .then(function(querySnapshot) {
-        var restaurants = [];
-        let restList = [];
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            // console.log(doc.id, " => ", doc.data());
-            restaurants.push(doc.data());
-            restList = restaurants;
-            // console.log(doc.data()['restName']);
+        //Get Restaurants
+        this.firestore.collection("Restaurant")
+        .get()
+        .toPromise()
+        .then(res => {
+            var restaurants = [];
+            this.restList = [];
+            res.forEach(doc => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.id, " => ", doc.data());
+                restaurants.push(doc.data());
+                // console.log(doc.data()['restName']);
+            });
+            this.restList = restaurants;
+            console.log(restaurants);
+
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
         });
-        console.log(restList);
-        
+
+      } else {
+        this.navCtrl.navigateBack('');
+      }
+    }, err => {
+      console.log('err', err);
     })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
 
 
 
