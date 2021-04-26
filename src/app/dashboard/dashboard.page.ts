@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -12,11 +13,15 @@ import { Router } from '@angular/router';
 export class DashboardPage implements OnInit {
 
   userEmail: string;
+  restName: string;
+  restThumbnail: string;
+  restDescription: string;
 
   constructor(
     private navCtrl: NavController,
+    private route: Router,
     private authService: AuthenticateService,
-    private route: Router
+    public firestore: AngularFirestore,
   ) { }
 
   profile() {
@@ -35,6 +40,30 @@ export class DashboardPage implements OnInit {
     }, err => {
       console.log('err', err);
     })
+
+    this.firestore.collection("Restaurant")
+    .get()
+    .toPromise()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            // this.restName = res.data()['restName'];
+            console.log(doc.data()['restName']);
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    // snapshot.forEach(doc => {
+    //   console.log("nanhhhhhhh",doc.data())
+    // })
+
+    // this.firestore.collection("Restaurant").add({
+    //   restName: 'Aniq',
+    //   restDesc: 'Fakhrul',
+    //   restThumbnail: 'test'
+    // });
 
   }
 
