@@ -12,11 +12,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class DashboardPage implements OnInit {
 
-  userEmail: string;
+ 
   restName: string;
   restThumbnail: string;
   restDescription: string;
-  // @Input() postDatas: any [];
+  public restList: Array<any> = [];
+
 
   constructor(
     private navCtrl: NavController,
@@ -31,16 +32,6 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
 
-    this.authService.userDetails().subscribe(res => {
-      console.log('res', res);
-      if (res !== null) {
-        this.userEmail = res.email;
-      } else {
-        this.navCtrl.navigateBack('');
-      }
-    }, err => {
-      console.log('err', err);
-    })
 
     //Get Restaurants
     this.firestore.collection("Restaurant")
@@ -48,14 +39,16 @@ export class DashboardPage implements OnInit {
     .toPromise()
     .then(function(querySnapshot) {
         var restaurants = [];
+        let restList = [];
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             // console.log(doc.id, " => ", doc.data());
             restaurants.push(doc.data());
-            // this.postDatas = restaurants;
+            restList = restaurants;
             // console.log(doc.data()['restName']);
         });
-        console.log(restaurants);
+        console.log(restList);
+        
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
