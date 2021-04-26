@@ -41,16 +41,16 @@ export class DashboardPage implements OnInit {
         .get()
         .toPromise()
         .then(res => {
-            var restaurants = [];
+            // var restaurants = [];
             this.restList = [];
             res.forEach(doc => {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
-                restaurants.push(doc.data());
+                this.restList.push(doc.data());
                 // console.log(doc.data()['restName']);
             });
-            this.restList = restaurants;
-            console.log(restaurants);
+            // this.restList = restaurants;
+            // console.log(restaurants);
 
         })
         .catch(function(error) {
