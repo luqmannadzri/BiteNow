@@ -1,0 +1,41 @@
+ion-content{
+
+    --ion-background-color:#141a26;
+}
+
+
+ion-text.title{
+    text-align: center;
+    text-justify: auto;
+}
+
+ion-icon{
+    color:#d92528;
+}
+
+
+h2{
+    color: #d92528;
+    padding-left: 10px;
+    padding-top: 0px;
+   
+}
+
+p{
+    color:white;
+    padding-left: 10px;
+    padding-top: 0px;
+    padding-right: 10px;
+   
+}
+
+ion-button{
+    --background:#354055; 
+    --border-color:  #d92528;
+    --border-radius: 9px;
+    --border-width: 5px;
+    --background-hover: #d92528;
+    --background-hover-opacity: 100%;
+    
+  
+}

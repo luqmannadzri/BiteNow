@@ -29,6 +29,10 @@ export class DashboardPage implements OnInit {
     this.route.navigate(['/profile']);
   }
 
+  resInfo() {
+    this.route.navigate(['/res-info']);
+  }
+
   ngOnInit() {
 
     this.authService.userDetails().subscribe(res => {
