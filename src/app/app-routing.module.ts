@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'res-info',
     loadChildren: () => import('./res-info/res-info.module').then( m => m.ResInfoPageModule)
   },
+  {
+    path: 'choose',
+    loadChildren: () => import('./choose/choose.module').then( m => m.ChoosePageModule)
+  },
  
 ];
 

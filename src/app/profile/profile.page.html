@@ -11,66 +11,24 @@
 
 <ion-content>
 
-  <ion-grid> <br>
-    <ion-row>
+<div class="top">
 
-      <ion-col>
-        Email:
-      </ion-col>
+  <ion-icon name="person-circle" class="profilepic"></ion-icon> <br>
+  <ion-text> {{firstName}} {{lastName}} </ion-text>
 
-      <ion-col text-center>
-       {{userEmail}}
-      </ion-col>
+</div>
+   
 
-      <ion-col></ion-col>
-    </ion-row>
+   <ion-button expand="full" >{{userEmail}}</ion-button>
+   <ion-button expand="full" >{{firstName}}</ion-button> 
+   <ion-button expand="full" >{{lastName}}</ion-button> 
+   <ion-button expand="full" >{{phone}}</ion-button>
 
-    <ion-row>
-
-      <ion-col>
-        First Name:
-      </ion-col>
-
-      <ion-col text-center>
-        {{firstName}}
-      </ion-col>
-
-      <ion-col></ion-col>
-    </ion-row>
-
-    <ion-row>
-
-      <ion-col>
-        Last Name:
-      </ion-col>
-
-      <ion-col text-center>
-        {{lastName}}
-      </ion-col>
-
-      <ion-col></ion-col>
-    </ion-row>
-
-    <ion-row>
-
-      <ion-col>
-        Phone Number:
-      </ion-col>
-
-      <ion-col text-center>
-        {{phone}}
-      </ion-col>
-
-      <ion-col></ion-col>
-    </ion-row>
-
-
-  </ion-grid>
 
 
 </ion-content>
 <ion-footer (click)="logout()">
-  <ion-toolbar color="secondary">
+  <ion-toolbar >
     <ion-title text-center>Log out</ion-title>
   </ion-toolbar>
 </ion-footer>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
-import { Router } from '@angular/router';
+import { Router,NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 
@@ -19,22 +19,28 @@ export class DashboardPage implements OnInit {
   public restList: Array<any>;
 
   constructor(
-    private navCtrl: NavController,
-    private route: Router,
+    public navCtrl: NavController,
+    private router: Router,
     private authService: AuthenticateService,
     public firestore: AngularFirestore,
   ) { }
 
   profile() {
-    this.route.navigate(['/profile']);
+    this.router.navigate(['/profile']);
   }
 
-  resInfo() {
-    this.route.navigate(['/res-info']);
+  resInfo(restNameID) {
+    // console.log("jadi ni",restName);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        id: restNameID
+      }
+    };
+
+    this.router.navigate(['/res-info'], navigationExtras);
   }
 
   ngOnInit() {
-
     this.authService.userDetails().subscribe(res => {
       console.log('res', res);
       if (res !== null) {
@@ -45,11 +51,14 @@ export class DashboardPage implements OnInit {
         .get()
         .toPromise()
         .then(res => {
-            // var restaurants = [];
+            console.log("ni id", res)
+           
             this.restList = [];
+            
             res.forEach(doc => {
                 // doc.data() is never undefined for query doc snapshots
                 // console.log(doc.id, " => ", doc.data());
+                // console.log("ni id dia", doc.data())
                 this.restList.push(doc.data());
                 // console.log(doc.data()['restName']);
             });

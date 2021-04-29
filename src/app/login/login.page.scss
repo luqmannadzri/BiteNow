@@ -1,22 +1,27 @@
 ion-content.background{
     --background: url(../../assets/img/background.png) 0 0/100% 100% no-repeat;
 
-  
-  
-    // --overflow: hidden;
-    // overflow: auto;
-    // &::-webkit-overflow-scrolling {
-    //   display: none;
-    // }
-
-
   }
+
+  
+  ion-button{
+    --background:#97393bc5; 
+    --border-color:  #d92528;
+    --border-radius: 9px;
+    --border-width: 5px;
+    --background-hover: #d92528;
+    --background-hover-opacity: 100%;  
+}
 
 ion-input{
   color:white;
 
 }
 
+a{
+  color: #d92528;
+
+}
 
 p{
   color:white;

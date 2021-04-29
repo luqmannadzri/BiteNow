@@ -2,9 +2,49 @@ ion-content{
 
     --ion-background-color:#141a26;
     margin: 0 auto;
+    align-items: center;
     
 }
 
-ion-col{
-    color: white;
+ion-text {
+
+    color:white;
+
 }
+
+ion-button{
+    --background: #d15759;
+    --background-hover: #d92528;
+    --background-hover-opacity: 100%;
+}
+
+
+
+.top{
+
+    padding-top: 3%;
+    text-align: center;
+    padding-bottom: 6%;
+
+}
+  
+  .profilepic {
+    font-size: 75px;
+    color: #d92528;
+    position: relative;
+    
+  }
+
+  ion-footer{
+
+ 
+
+    ion-toolbar{
+        color: white;
+        --background: #d92528;
+    }
+
+  
+  }
+
+  

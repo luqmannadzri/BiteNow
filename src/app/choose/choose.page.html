@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+      <ion-title>Booking</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <!-- <app-loader *ngIf="isLoading"></app-loader> -->
+
+  <ion-card class="no-padding">
+
+      <ion-card-content>
+
+     
+
+          <ion-grid>
+
+              <ion-label>How many sits?</ion-label>
+
+              <ion-row>
+
+                  <ion-col size="7">
+                      <h6>2 Seats</h6>
+                  </ion-col>
+                  
+                  <ion-col size="5">
+                      <ion-button
+                
+                          size="small"
+                          color="light">+</ion-button>
+
+                      <ion-button
+                          
+                          size="small"
+                          color="light">-</ion-button>
+
+                  </ion-col>
+
+              </ion-row>
+
+
+              <ion-label>Reservation date</ion-label>
+
+              <ion-row>
+
+                  <ion-col size="12">
+                    <ion-datetime displayFormat="DD MM YY" placeholder="Select Date"></ion-datetime>
+                  </ion-col>
+
+              </ion-row>
+
+              <ion-label>Time Slot</ion-label>
+
+              <ion-row>
+
+                  <ion-col size="12">
+               
+
+                  <ion-segment (ionChange)="segmentChanged($event)" scrollable>
+
+                    <ion-segment-button value="11">
+                      <ion-label>11:00 P.M.</ion-label>
+                    </ion-segment-button>
+
+                    <ion-segment-button value="1">
+                      <ion-label>1:00 P.M</ion-label>
+                    </ion-segment-button>
+
+                    <ion-segment-button value="2">
+                        <ion-label>3:00 P.M</ion-label>
+                      </ion-segment-button>
+
+                      <ion-segment-button value="5">
+                        <ion-label>5:00 P.M</ion-label>
+                      </ion-segment-button>
+
+                      <ion-segment-button value="7">
+                        <ion-label>7:00 P.M</ion-label>
+                      </ion-segment-button>
+
+                  </ion-segment>
+
+                  </ion-col>
+
+              </ion-row>
+
+
+              <ion-label>Seating</ion-label>
+
+              <ion-row>
+
+                  <ion-col class="tables-wrapper" size="2">
+                      <!-- <div
+                          class="table-item elevated"
+                          [ngClass]="{
+                              selected: selectedTable?._id == table._id,
+                              disabled:
+                                  isReserved(table._id) && !table.selectable
+                          }"
+                          (click)="handleSelectTable(table._id)"
+                          *ngFor="let table of tables"
+                      ></div> -->
+                  </ion-col>
+
+              </ion-row>
+
+          </ion-grid>
+
+          <ion-button expand="full">
+
+              Confirm booking
+
+          </ion-button>
+
+      </ion-card-content>
+
+  </ion-card>
+  
+</ion-content>
+

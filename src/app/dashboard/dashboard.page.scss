@@ -5,6 +5,8 @@ ion-content{
 }
 
 .logo{
+
+    padding-top: 3%;
     
     ion-button{
         --background:#354055; 
@@ -14,13 +16,17 @@ ion-content{
         --background-hover: #d92528;
         --background-hover-opacity: 100%; 
     }
+
+    img { 
+        width: 50%;
+        height: auto;
+        margin-left: -3%;
+     
+      }
+
+    
 }
 
-img { 
-    width: 50%;
-    height: auto;
-    padding: 5px;
-  }
 
   h1{
       color: #d92528;
@@ -30,6 +36,8 @@ img {
   }
 
   ion-item.restaurant{
+
+    padding-bottom: 3%;
 
 
     ion-label{
@@ -55,17 +63,12 @@ img {
         --border-radius: 9px;
         --border-width: 5px;
         --background-hover: #d92528;
-        --background-hover-opacity: 100%;
-        
-      
+        --background-hover-opacity: 100%;  
     }
 
-
-
+  }
 
  
-
-  }
  
 
 

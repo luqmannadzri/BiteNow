@@ -1,0 +1,70 @@
+ion-content{
+
+    --ion-background-color:#141a26;
+}
+
+ion-button{
+    --background: #d15759;
+    --background-hover: #d92528;
+    --background-hover-opacity: 100%;
+    --border-radius: 9px;
+    --border-width: 5px;
+}
+
+ion-card {
+    height: min-content;
+    .title {
+        color: white;
+        font-size: 25px;
+    }
+    ion-text {
+        line-height: 2.5em;
+    }
+
+    ion-label {
+        color: white;
+        font-size: 18px;
+    }
+
+    ion-segment {
+        background-color: transparent !important;
+        padding: 1em 0 1em 0;
+        margin: 0;
+        ion-segment-button {
+            --color-checked: white !important;
+            --background-checked: #d92528;
+            --indicator-color: #d92528;
+            --background-focused-opacity: 50;
+            border: 1px solid #d92528;
+            margin: 5px;
+            ion-label {
+                font-size: 13px !important;
+                color: inherit;
+            }
+        }
+    }
+
+    .tables-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(8em, auto));
+        grid-template-rows: repeat(2, minmax(1em, auto));
+        justify-content: space-between;
+    }
+
+    .table-item {
+        content: '';
+        height: 20px;
+        width: 60px;
+        background-color: linen;
+        margin: 10px 0 10px 0;
+        border-radius: 4px;
+        &.disabled {
+            pointer-events: none;
+            background-color: silver;
+        }
+
+        &.selected {
+            background-color: orange;
+        }
+    }
+}
