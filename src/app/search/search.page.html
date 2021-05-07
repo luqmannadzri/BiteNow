@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-item class="logo" lines="none">
+
+  <img src="assets/img/menu.png">
+
+  <ion-label></ion-label>
+
+</ion-item>
+
+<ion-content [fullscreen]="true">
+
+  <ion-searchbar showcancelbutton="focus" (ionInput)="filterList($event)">
+
+  </ion-searchbar> <br>
+
+  <ion-list lines="none">
+    <ion-item *ngFor="let Restaurant of restList" class="restaurant">
+     
+      <ion-thumbnail slot="start">
+
+        <img src="{{Restaurant.restThumbnail}}">
+
+      </ion-thumbnail>
+
+      <ion-label>{{Restaurant.restName}}</ion-label>
+
+      <ion-button fill="solid" (click)="resInfo(Restaurant.uid)">VIEW</ion-button>
+
+
+    </ion-item>
+  </ion-list>
 
 </ion-content>

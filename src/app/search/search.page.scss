@@ -1,0 +1,70 @@
+ion-content{
+
+    --ion-background-color:#141a26;
+}
+
+  ion-button{
+    --background:#354055; 
+    --border-color:  #d92528;
+    --border-radius: 9px;
+    --border-width: 5px;
+    --background-hover: #d92528;
+    --background-hover-opacity: 100%;  
+}
+
+.restaurant{
+
+    padding-bottom: 3%;
+
+
+    ion-label{
+
+        --color: white;
+
+    }
+
+    ion-thumbnail{
+        --size: 100;
+        --border-radius: 15px;
+       
+    }
+
+    img{
+        height:auto;
+        width: auto;
+    }
+
+    ion-button{
+        --background:#354055; 
+        --border-color:  #d92528;
+        --border-radius: 9px;
+        --border-width: 5px;
+        --background-hover: #d92528;
+        --background-hover-opacity: 100%;  
+    }
+
+  }
+
+  
+  .logo{
+
+    --background:#141a26;
+
+    padding-top: 3%;
+
+    img { 
+        width: 50%;
+        height: auto;
+        margin-left: -3%;
+     
+      }
+
+    
+}
+
+ion-searchbar{
+
+    --background:#4a5d8393;
+    --color: white;
+
+}
