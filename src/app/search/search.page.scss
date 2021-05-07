@@ -14,6 +14,7 @@ ion-content{
 
 .restaurant{
 
+    padding-top: 3%;
     padding-bottom: 3%;
 
 
@@ -40,7 +41,8 @@ ion-content{
         --border-radius: 9px;
         --border-width: 5px;
         --background-hover: #d92528;
-        --background-hover-opacity: 100%;  
+        --background-hover-opacity: 100%; 
+        --background-activated: #d92528c0;
     }
 
   }
@@ -66,5 +68,6 @@ ion-searchbar{
 
     --background:#4a5d8393;
     --color: white;
+    --cancel-button-color: white;
 
 }

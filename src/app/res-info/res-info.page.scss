@@ -54,12 +54,27 @@ p{
    
 }
 
-ion-button{
-    --background:#354055; 
-    --border-color:  #d92528;
-    --border-radius: 9px;
-    --border-width: 5px;
-    --background-hover: #d92528;
-    --background-hover-opacity: 100%;
-    bottom: 10px;
+
+ion-footer{
+
+
+    ion-toolbar{
+
+        --background:#141a26;
+        --border-width: 0;
+        --padding-bottom: 10px;
+        
+
+        ion-button{
+            --background:#354055; 
+            --border-color:  #d92528;
+            --border-radius: 9px;
+            --border-width: 5px;
+            --background-hover: #d92528;
+            --background-hover-opacity: 100%;
+            --background-activated: #d92528c0;
+        }
+
+    }
+
 }
