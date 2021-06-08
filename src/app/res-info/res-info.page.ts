@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -37,8 +37,15 @@ export class ResInfoPage implements OnInit {
    
    }
 
-  booking() {
-    this.router.navigate(['/choose']);
+  booking(restNameID) {
+
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        id: restNameID
+      }
+    };
+    
+    this.router.navigate(['/choose'], navigationExtras);
   }
 
   ngOnInit() {

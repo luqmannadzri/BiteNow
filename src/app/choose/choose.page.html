@@ -73,7 +73,7 @@
                       <ion-label>1:00 P.M</ion-label>
                     </ion-segment-button>
 
-                    <ion-segment-button value="2">
+                    <ion-segment-button value="3">
                         <ion-label>3:00 P.M</ion-label>
                       </ion-segment-button>
 
@@ -92,12 +92,14 @@
               </ion-row>
 
 
-              <ion-label>Seating</ion-label>
+              <ion-label>Table</ion-label>
 
-              <ion-row>
+              <!-- <ion-row>
 
                   <ion-col class="tables-wrapper" size="2">
-                      <!-- <div
+
+                    
+                      <div
                           class="table-item elevated"
                           [ngClass]="{
                               selected: selectedTable?._id == table._id,
@@ -106,14 +108,35 @@
                           }"
                           (click)="handleSelectTable(table._id)"
                           *ngFor="let table of tables"
-                      ></div> -->
+                      ></div>
+                      
                   </ion-col>
 
-              </ion-row>
+              </ion-row> -->
 
           </ion-grid>
 
-          <ion-button expand="full">
+          <div cards>
+
+            <div class="grid-full">
+              <ion-row>
+
+                <ion-col  *ngFor="let tables of tableList | keyvalue" class="table" >
+
+                  <ion-card tappable>
+                    <p>Table </p>
+                    <h1 > {{ tables.value.tableNo }}</h1>
+                  </ion-card>
+
+                </ion-col>
+
+              </ion-row>
+            </div>
+        
+          </div>
+          
+
+          <ion-button expand="full" (click)="showAlert()">
 
               Confirm booking
 

@@ -51,7 +51,6 @@ export class DashboardPage implements OnInit {
         .get()
         .toPromise()
         .then(res => {
-            console.log("ni id", res)
            
             this.restList = [];
             
