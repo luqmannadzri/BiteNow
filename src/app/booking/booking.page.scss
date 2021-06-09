@@ -19,3 +19,45 @@ ion-content{
 
     
 }
+
+h1{
+    color: #d92528;
+    padding-left: 20px;
+    padding-top: 0px;
+   
+}
+
+ion-item.booking{
+
+
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+
+
+    ion-label{
+
+        --color: white;
+
+        h2{
+            color: white;
+            
+        }
+
+        p{
+            color: #f4971f;
+        }
+
+    }
+
+    ion-button{
+        --background:#354055; 
+        --border-color:  #d92528;
+        --border-radius: 9px;
+        --border-width: 5px;
+        --background-hover: #d92528;
+        --background-hover-opacity: 100%;  
+        --background-activated: #d92528c0;
+    }
+
+}

@@ -18,7 +18,6 @@
 
       <ion-card-content>
 
-     
 
           <ion-grid>
 
@@ -115,23 +114,33 @@
               </ion-row> -->
 
           </ion-grid>
+          
 
-          <div cards>
+        <!-- <form class="form" [formGroup]="validations_form" (ngSubmit)="Booking(this.value.Availability)"> -->
+
+          <div class="cardContainer">
 
             <div class="grid-full">
               <ion-row>
 
-                <ion-col  *ngFor="let tables of tableList | keyvalue" class="table" >
+                <ion-col *ngFor="let tables of tableList | keyvalue" class="table" >
 
-                  <ion-card tappable>
+                  <ion-card class="tableCard" [ngClass]="{'selected':!tables.value.Availability}"  disabled="{{!tables.value.disabled}}"
+                            button="true" color="danger" (click)="buttonToggle(tables.value)">
+
+
                     <p>Table </p>
-                    <h1 > {{ tables.value.tableNo }}</h1>
+                    <h1> {{ tables.value.tableNo }}</h1>
+
                   </ion-card>
 
                 </ion-col>
 
               </ion-row>
+
             </div>
+
+            <p>Each Table is only for 4 person</p><br>
         
           </div>
           
@@ -141,6 +150,8 @@
               Confirm booking
 
           </ion-button>
+
+          <!-- </form> -->
 
       </ion-card-content>
 

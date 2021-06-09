@@ -1,15 +1,16 @@
 ion-content{
 
     --ion-background-color:#141a26;
+
+    ion-button{
+        --background: #d15759;
+        --background-hover: #d92528;
+        --background-hover-opacity: 100%;
+        --border-radius: 9px;
+        --border-width: 5px;
+    }
 }
 
-ion-button{
-    --background: #d15759;
-    --background-hover: #d92528;
-    --background-hover-opacity: 100%;
-    --border-radius: 9px;
-    --border-width: 5px;
-}
 
 ion-card {
     height: min-content;
@@ -25,6 +26,7 @@ ion-card {
         color: white;
         font-size: 18px;
     }
+
 
     ion-segment {
 
@@ -46,6 +48,11 @@ ion-card {
         }
     }
 
+    .cardContainer{
+        text-align: center;
+        margin-bottom: 10;
+    }
+
   .grid-full {
 
         ion-col {
@@ -59,26 +66,39 @@ ion-card {
         .col {
             padding: 10 px 0;
         }
-        ion-card {
+
+        .tableCard{
+
             align-items: center; 
             margin: 0 0 12px 12px;
             padding: 14px;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
             border-radius: 4px;
-            --background: #d92528;
-            --color: white;
+            // background-color: #d92528;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
 
-            h1 {
-                font-weight: 400;
-                font-size: 2.5 rem;
+           
+
+            &.disabled {
+                pointer-events: none;
+                background-color: silver;
+                opacity: 0.45;
             }
-            p {
-                font-weight: 100;
-                font-size: 10 rem;
+    
+            &.selected {
+                opacity: 0.45;
+                // background-color: #d92528;
             }
+    
+            }
+
+       
+       
         }
-    }
 
+       
 
 
     .table-item {

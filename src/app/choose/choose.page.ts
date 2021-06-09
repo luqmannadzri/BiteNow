@@ -6,6 +6,7 @@ import { Router,NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-choose',
   templateUrl: './choose.page.html',
@@ -14,8 +15,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ChoosePage implements OnInit {
 
   public tableList: Array<any>;
+  public disabled: Array<any>;
   restID: any;
   tableNumber: number;
+  tableAvailability: boolean;
 
     constructor( 
       
@@ -42,18 +45,29 @@ export class ChoosePage implements OnInit {
           .get()
           .toPromise()
           .then(res => {
-            console.log(res);
              
               this.tableList = [];
               
               res.forEach(doc => {
          
-                  this.tableList.push(doc.data());
+                this.tableList.push(
+                  {
+                    Availability: doc.data().Availability, 
+                    tableNo: doc.data().tableNo,
+                    disabled: doc.data().Availability
+                  });
+                  // this.tableList.push(doc.data());
+                  // console.log("tengoksini", doc.data().disabled);
                   // console.log("ni id dia", doc.data());
-                  
               });
               
           })
+    }
+    
+    public buttonToggle(tables){
+      //inverted boolean to toggle
+          tables.Availability=!tables.Availability;
+
 
     }
 
