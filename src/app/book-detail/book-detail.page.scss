@@ -1,0 +1,76 @@
+ion-content{
+
+    --ion-background-color:#141a26;
+}
+
+
+ion-text.title{
+    text-align: center;
+    text-justify: auto;
+
+}
+
+ion-card.details{
+
+    --background:#354055; 
+
+    img{
+
+        height: auto;
+        width: auto;
+    }
+
+    ion-card-subtitle{
+
+        --color: white;
+    }
+    
+    ion-card-title{
+        --color: #f4971f;
+    }
+    
+    ion-card-content{
+        color: white;
+    }
+
+
+}
+
+ion-card.reminder{
+
+    --background:#354055; 
+    
+    ion-card-title{
+        --color:  #d92528;
+    }
+    
+    ion-card-content{
+        color: white;
+    }
+
+
+}
+
+ion-footer{
+
+
+    ion-toolbar{
+
+        --background:#141a26;
+        --border-width: 0;
+        --padding-bottom: 10px;
+        
+
+        ion-button{
+            --background:#d925288a; 
+            --border-color:  #d92528;
+            --border-radius: 9px;
+            --border-width: 5px;
+            --background-hover: #d92528;
+            --background-hover-opacity: 100%;
+            --background-activated: #d92528c0;
+        }
+
+    }
+
+}

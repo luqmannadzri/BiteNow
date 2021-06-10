@@ -67,7 +67,10 @@ export class ChoosePage implements OnInit {
     public buttonToggle(tables){
       //inverted boolean to toggle
           tables.Availability=!tables.Availability;
-
+      //check tableNo
+          tables.tableNo=tables.tableNo;
+      //check the value change
+          console.log(tables.Availability, "table" ,tables.tableNo);
 
     }
 

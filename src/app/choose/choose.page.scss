@@ -79,17 +79,9 @@ ion-card {
             text-align: center;
             vertical-align: middle;
 
-           
-
-            &.disabled {
-                pointer-events: none;
-                background-color: silver;
-                opacity: 0.45;
-            }
     
             &.selected {
-                opacity: 0.45;
-                // background-color: #d92528;
+                opacity: 0.15;
             }
     
             }
