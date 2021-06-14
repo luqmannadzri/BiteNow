@@ -5,6 +5,10 @@ import { AuthenticateService } from '../services/authentication.service';
 import { Router,NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
+import 'firebase/firestore';
+import { BookingPage } from '../booking/booking.page';
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 @Component({
@@ -16,9 +20,18 @@ export class ChoosePage implements OnInit {
 
   public tableList: Array<any>;
   public disabled: Array<any>;
+  public booked_tables: Array<any>;
+  public date;
+  public seats=0;
+  public time: string;
+  displayDate: any = moment().format();
   restID: any;
-  tableNumber: number;
-  tableAvailability: boolean;
+  uid: string;
+  restName: string;
+  bookingID: string;
+
+  // tableNumber: number;
+  // tableAvailability: boolean;
 
     constructor( 
       
@@ -39,9 +52,18 @@ export class ChoosePage implements OnInit {
 
 
     ngOnInit() {
+      this.booked_tables = [];
+
+      this.authService.userDetails().subscribe(res => {
+        this.uid = res.uid;
+      }, err => {
+        console.log('err', err);
+      })
 
           //Get Table
-          this.firestore.collection("Restaurant").doc(this.restID).collection("Table")
+          const rest = this.firestore.collection("Restaurant").doc(this.restID);
+
+          rest.collection("Table")
           .get()
           .toPromise()
           .then(res => {
@@ -62,6 +84,35 @@ export class ChoosePage implements OnInit {
               });
               
           })
+
+          rest.get().toPromise().then(res => {
+           this.restName = res.data()['restName'];
+          })
+    }
+
+    getDate(){
+      this.date = moment(this.date).format('YYYY-MM-DD');
+      console.log(this.date);
+    }
+
+    segmentChanged(ev: any) {
+      console.log('Segment changed', ev.target.value);
+      this.time=ev.target.value;
+    }
+
+    increaseSeat(){
+      if (this.seats<12){
+        this.seats=this.seats+1;
+      }
+      console.log(this.seats);
+    }
+
+    decreaseSeat(){
+      if (this.seats>0){
+        this.seats=this.seats-1;
+      }
+      
+      console.log(this.seats);
     }
     
     public buttonToggle(tables){
@@ -72,15 +123,54 @@ export class ChoosePage implements OnInit {
       //check the value change
           console.log(tables.Availability, "table" ,tables.tableNo);
 
+
+          if (tables.Availability == false){
+            // check if tableNo already exists in array
+            this.booked_tables.push(tables.tableNo);
+          }else{
+            console.log("please remove");
+            this.booked_tables.map((tableno, index) => {
+              if(tableno[index]==tables.tableNo){
+                this.booked_tables.splice(index,index);
+              }
+            })
+          }
+          console.log(this.booked_tables," tables selected");
+
     }
 
     showAlert() {
 
+      this.firestore.collection('Booking').add(
+        {
+          date: this.date,
+          noPerson: this.seats,
+          time: this.time,
+          tableNo: ['1','2'],
+          uid: this.uid,
+          restName: this.restName,
+
+          
+        }).then(res => {
+            this.firestore.collection('Booking').doc(res.id).update(
+              {
+                bookingID: res.id
+              }
+            )
+        });
+
       this.alertController.create({
-        header: 'Successful',
-        subHeader: 'Booking is confirmed!',
+        header: 'Successful!',
+        subHeader: 'Your table has been booked',
         message: 'Please refer to booking page and present it at the restaurant',
-        buttons: ['OK']
+        buttons: [
+          {
+            text: 'Okay',
+            handler: () => {
+              this.navCtrl.back();
+            }
+          }
+        ]
       }).then(res => {
   
         res.present();

@@ -21,24 +21,26 @@
 
           <ion-grid>
 
-              <ion-label>How many sits?</ion-label>
+              <ion-label>How many seats?</ion-label>
 
               <ion-row>
 
                   <ion-col size="7">
-                      <h6>2 Seats</h6>
+                      <h6>{{this.seats}} Seats</h6>
                   </ion-col>
                   
                   <ion-col size="5">
                       <ion-button
                 
                           size="small"
-                          color="light">+</ion-button>
+                          color="light"
+                          (click)="increaseSeat()">+</ion-button>
 
                       <ion-button
                           
                           size="small"
-                          color="light">-</ion-button>
+                          color="light"
+                          (click)="decreaseSeat()">-</ion-button>
 
                   </ion-col>
 
@@ -50,7 +52,7 @@
               <ion-row>
 
                   <ion-col size="12">
-                    <ion-datetime displayFormat="DD MM YY" placeholder="Select Date"></ion-datetime>
+                    <ion-datetime displayFormat="DD MMMM YY" placeholder="Select Date" [(ngModel)]="date" (ionChange)="getDate()" min="{{displayDate}}" ></ion-datetime>
                   </ion-col>
 
               </ion-row>
@@ -64,23 +66,23 @@
 
                   <ion-segment (ionChange)="segmentChanged($event)" scrollable>
 
-                    <ion-segment-button value="11">
+                    <ion-segment-button value="11 A.M.">
                       <ion-label>11:00 P.M.</ion-label>
                     </ion-segment-button>
 
-                    <ion-segment-button value="1">
+                    <ion-segment-button value="1 P.M.">
                       <ion-label>1:00 P.M</ion-label>
                     </ion-segment-button>
 
-                    <ion-segment-button value="3">
+                    <ion-segment-button value="3 P.M.">
                         <ion-label>3:00 P.M</ion-label>
                       </ion-segment-button>
 
-                      <ion-segment-button value="5">
+                      <ion-segment-button value="5 P.M.">
                         <ion-label>5:00 P.M</ion-label>
                       </ion-segment-button>
 
-                      <ion-segment-button value="7">
+                      <ion-segment-button value="7 P.M.">
                         <ion-label>7:00 P.M</ion-label>
                       </ion-segment-button>
 
@@ -93,30 +95,9 @@
 
               <ion-label>Table</ion-label>
 
-              <!-- <ion-row>
-
-                  <ion-col class="tables-wrapper" size="2">
-
-                    
-                      <div
-                          class="table-item elevated"
-                          [ngClass]="{
-                              selected: selectedTable?._id == table._id,
-                              disabled:
-                                  isReserved(table._id) && !table.selectable
-                          }"
-                          (click)="handleSelectTable(table._id)"
-                          *ngFor="let table of tables"
-                      ></div>
-                      
-                  </ion-col>
-
-              </ion-row> -->
 
           </ion-grid>
           
-
-        <!-- <form class="form" [formGroup]="validations_form" (ngSubmit)="Booking(this.value.Availability)"> -->
 
           <div class="cardContainer">
 
@@ -150,8 +131,6 @@
               Confirm booking
 
           </ion-button>
-
-          <!-- </form> -->
 
       </ion-card-content>
 

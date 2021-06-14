@@ -18,18 +18,18 @@
 
 </ion-row>
 
-<ion-item class="booking" lines="full" >
+<ion-item *ngFor="let bookings of bookList" class="booking" lines="full" >
 
   <ion-label postion="fixed">
     
-    <h2>2 February 2021</h2>
-    <p>Miraj Restaurant</p> 
+    <h2>{{bookings.date}}</h2>
+    <p>{{bookings.restName}}</p> 
 
 
   </ion-label>
   
 
-  <ion-button fill="solid" (click)="bookDetail()">VIEW</ion-button>
+  <ion-button fill="solid" (click)="bookDetail(bookings.bookingID)">VIEW</ion-button>
 
 </ion-item>
 

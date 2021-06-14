@@ -33,6 +33,7 @@ ion-card {
         background-color: transparent !important;
         padding: 1em 0 1em 0;
         margin: 0;
+        --indicator-color: #d92528;
 
         ion-segment-button {
             --color-checked: white !important;
@@ -43,7 +44,7 @@ ion-card {
             margin: 5px;
             ion-label {
                 font-size: 13px !important;
-                color: inherit;
+                color: grey;
             }
         }
     }
@@ -89,8 +90,6 @@ ion-card {
        
        
         }
-
-       
 
 
     .table-item {
