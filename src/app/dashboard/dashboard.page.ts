@@ -25,10 +25,6 @@ export class DashboardPage implements OnInit {
     public firestore: AngularFirestore,
   ) { }
 
-  profile() {
-    this.router.navigate(['/profile']);
-  }
-
   resInfo(restNameID) {
     // console.log("jadi ni",restName);
     let navigationExtras: NavigationExtras = {
@@ -42,7 +38,7 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
     this.authService.userDetails().subscribe(res => {
-      console.log('res', res);
+    
       if (res !== null) {
         this.userEmail = res.email;
 

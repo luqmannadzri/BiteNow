@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
+import { ProfilePage } from './Profile.page';
 
-describe('ProfilePage', () => {
+describe('SavedPage', () => {
   let component: ProfilePage;
   let fixture: ComponentFixture<ProfilePage>;
 

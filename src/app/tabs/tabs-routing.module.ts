@@ -23,8 +23,8 @@ const routes: Routes = [
         loadChildren: () => import('../booking/booking.module').then( m => m.BookingPageModule)
       },
       {
-        path: 'saved',
-        loadChildren: () => import('../saved/saved.module').then( m => m.SavedPageModule)
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
       },
 		]
 	}	

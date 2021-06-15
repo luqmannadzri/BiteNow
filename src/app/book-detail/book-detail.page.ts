@@ -4,6 +4,7 @@ import { AuthenticateService } from '../services/authentication.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-book-detail',
@@ -26,6 +27,7 @@ export class BookDetailPage implements OnInit {
 
   constructor(
 
+    public alertController: AlertController,
     private navCtrl: NavController,
     private router: Router,
     private authService: AuthenticateService,
@@ -38,14 +40,14 @@ export class BookDetailPage implements OnInit {
       this.bookID = params['id']; 
      
     });
-    console.log('id');
+ 
 
    }
 
   ngOnInit() {
 
     this.authService.userDetails().subscribe(res => {
-      console.log('res', res);
+      
       if (res !== null) {
         this.uid = res.uid;
     
@@ -72,9 +74,6 @@ export class BookDetailPage implements OnInit {
       this.userName = res.data()['fname'];
     
     })
-
-    
-
         .catch(function(error) {
           console.log("Error getting documents: ", error);
       });
@@ -82,13 +81,44 @@ export class BookDetailPage implements OnInit {
     } else {
       this.navCtrl.navigateBack('');
     }
-    }, err => {
-    console.log('err', err);
-    })
+      }, err => {
+          console.log('err', err);
+      })
 
 
 
     
+
+  }
+
+  showAlert() {
+
+    this.alertController.create({
+      header: 'Cancel Booking?',
+      subHeader: 'Are you sure you want to cancel the booking?',
+      message: 'Press confirm to proceed or cancel to keep the booking',
+      buttons: [
+        {
+          text: 'Confirm',
+          handler: () => {
+
+            this.firestore.collection("Booking").doc(this.bookID).delete();
+            this.navCtrl.back();
+
+          }
+        },
+        {
+          text: 'Cancel',
+          // handler: () => {
+          //   this.navCtrl.back();
+          // }
+        }
+      ]
+    }).then(res => {
+
+      res.present();
+
+    });
 
   }
 

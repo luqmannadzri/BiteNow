@@ -123,7 +123,6 @@ export class ChoosePage implements OnInit {
       //check the value change
           console.log(tables.Availability, "table" ,tables.tableNo);
 
-
           if (tables.Availability == false){
             // check if tableNo already exists in array
             this.booked_tables.push(tables.tableNo);

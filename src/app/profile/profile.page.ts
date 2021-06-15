@@ -25,7 +25,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
 
     this.authService.userDetails().subscribe(res => {
-      console.log('res', res);
+
       if (res !== null) {
         this.userEmail = res.email;
 
@@ -36,7 +36,7 @@ export class ProfilePage implements OnInit {
           this.firstName = res.data()['fname'];
           this.lastName = res.data()['lname'];
           this.phone = res.data()['phone'];
-          console.log("nahh email",res.data()['fname']) //debug
+          // console.log("nahh email",res.data()['fname']) //debug
         })
 
       } else {

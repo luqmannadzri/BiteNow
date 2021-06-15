@@ -37,10 +37,9 @@ export class BookingPage implements OnInit {
   ngOnInit() {
 
     this.authService.userDetails().subscribe(res => {
-      console.log('res', res);
+  
       if (res !== null) {
         this.uid = res.uid;
-   
         //Get Bookings
         this.firestore.collection("Booking")
         .get()
@@ -50,14 +49,12 @@ export class BookingPage implements OnInit {
             this.bookList = [];
             
             res.forEach(doc => {
-                
 
               if(doc.data()['uid']==this.uid){
 
                 this.bookList.push(doc.data());
 
-              }
-                
+              }  
                
             });
           

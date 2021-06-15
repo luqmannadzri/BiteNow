@@ -31,7 +31,7 @@
     </ion-card-content>
 
     <ion-card-content>
-      Time: {{time}} P.M.
+      Time: {{time}}
     </ion-card-content>
 
     <ion-card-content>
@@ -50,13 +50,13 @@
       <ion-card-title>Reminder</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content>
-      <ul>
-        <li>The booking is only valid 1 hours from the booking time.</li>
-        <li>Please show the booking details upon arrival at the restaurant.</li>
-        <li>Please cancel the booking if you cannot make it.</li>
-      </ul>
-    
+        <ion-card-content>
+          <ul>
+            <li>The booking is only valid 1 hours from the booking time.</li>
+            <li>Please show the booking details upon arrival at the restaurant.</li>
+            <li>Please cancel the booking if you cannot make it.</li>
+          </ul>
+        
     </ion-card-content>
 
   </ion-card>
@@ -65,7 +65,7 @@
 
     <ion-toolbar>
   
-      <ion-button fill="solid" expand='block'>Cancel Booking</ion-button>
+      <ion-button fill="solid" expand='block' (click)="showAlert()">Cancel Booking</ion-button>
   
     </ion-toolbar>
   
