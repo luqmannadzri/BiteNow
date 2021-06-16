@@ -18,7 +18,7 @@
 
     </ion-row>
 
-    <ion-item *ngFor="let restaurants of restList" class="restaurant" lines="none" >
+    <ion-item *ngFor="let restaurants of restList" class="restaurant" lines="none" (click)="resInfo(restaurants.uid)" >
 
       <ion-thumbnail slot="start">
 

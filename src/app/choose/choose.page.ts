@@ -46,7 +46,6 @@ export class ChoosePage implements OnInit {
         this.route.queryParams.subscribe(params => {
           this.restID = params['id']; 
 
-         
         });
       }
 
@@ -126,11 +125,17 @@ export class ChoosePage implements OnInit {
           if (tables.Availability == false){
             // check if tableNo already exists in array
             this.booked_tables.push(tables.tableNo);
+
           }else{
+
             console.log("please remove");
+
             this.booked_tables.map((tableno, index) => {
+
               if(tableno[index]==tables.tableNo){
+
                 this.booked_tables.splice(index,index);
+
               }
             })
           }
@@ -166,7 +171,7 @@ export class ChoosePage implements OnInit {
           {
             text: 'Okay',
             handler: () => {
-              this.navCtrl.back();
+              this.navCtrl.navigateRoot('/tabs/dashboard');
             }
           }
         ]

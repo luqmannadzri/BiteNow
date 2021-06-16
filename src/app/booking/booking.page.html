@@ -18,7 +18,7 @@
 
 </ion-row>
 
-<ion-item *ngFor="let bookings of bookList" class="booking" lines="full" >
+<ion-item *ngFor="let bookings of bookList" class="booking" lines="full" (click)="bookDetail(bookings.bookingID)" >
 
   <ion-label postion="fixed">
     

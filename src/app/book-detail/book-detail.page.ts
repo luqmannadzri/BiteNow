@@ -5,6 +5,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { BookingPage } from '../booking/booking.page';
 
 @Component({
   selector: 'app-book-detail',
@@ -87,8 +88,6 @@ export class BookDetailPage implements OnInit {
 
 
 
-    
-
   }
 
   showAlert() {
@@ -103,7 +102,7 @@ export class BookDetailPage implements OnInit {
           handler: () => {
 
             this.firestore.collection("Booking").doc(this.bookID).delete();
-            this.navCtrl.back();
+            this.navCtrl.navigateRoot('/tabs/booking');
 
           }
         },
@@ -119,7 +118,7 @@ export class BookDetailPage implements OnInit {
       res.present();
 
     });
-
+   
   }
 
 }

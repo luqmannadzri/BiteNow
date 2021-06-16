@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   templateUrl: './booking.page.html',
   styleUrls: ['./booking.page.scss'],
 })
-export class BookingPage implements OnInit {
+export class BookingPage  {
 
   restName: string;
   date: string;
@@ -34,7 +34,7 @@ export class BookingPage implements OnInit {
     this.router.navigate(['/book-detail'], navigationExtras);
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
 
     this.authService.userDetails().subscribe(res => {
   
@@ -73,5 +73,6 @@ export class BookingPage implements OnInit {
     })
         
   }
+  
 
 }
