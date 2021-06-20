@@ -62,7 +62,7 @@ export class ResInfoPage implements OnInit {
           this.restDescription = res.data()['restDesc'];
           this.restAddress = res.data()['restAddress'];
           this.restDisplay = res.data()['restDisplay'];
-          // console.log("nahh email",res.data()); //debug
+          
         })
 
       

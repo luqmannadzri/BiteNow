@@ -25,6 +25,8 @@ export class BookDetailPage implements OnInit {
   bookingID: any;
   uid: string;
   userName: string;
+  rest: any;
+  restDisplay: any;
 
   constructor(
 
@@ -47,6 +49,7 @@ export class BookDetailPage implements OnInit {
 
   ngOnInit() {
 
+
     this.authService.userDetails().subscribe(res => {
       
       if (res !== null) {
@@ -62,19 +65,28 @@ export class BookDetailPage implements OnInit {
       this.noPerson = res.data()['noPerson'];
       this.time = res.data()['time'];
       this.userID = res.data()['uid'];
-      this.bookingID =res.data()['bookingID']
-      this.tableNo =res.data()['tableNo']
+      this.bookingID =res.data()['bookingID'];
+      this.tableNo =res.data()['tableNo'];
+      this.rest =res.data()['rest'];
 
+      this.firestore.collection('Restaurant').doc(this.rest).get()
+      .toPromise() //guna utk enable pakai then
+      .then(res => {
+        
+        this.restDisplay = res.data()['restDisplay'];
+      
+      })
 
     })
-
+    
     this.firestore.collection("People").doc(this.uid).get()
     .toPromise() //guna utk enable pakai then
     .then(res => {
       
       this.userName = res.data()['fname'];
-    
+
     })
+
         .catch(function(error) {
           console.log("Error getting documents: ", error);
       });
@@ -85,7 +97,6 @@ export class BookDetailPage implements OnInit {
       }, err => {
           console.log('err', err);
       })
-
 
 
   }
@@ -102,6 +113,15 @@ export class BookDetailPage implements OnInit {
           handler: () => {
 
             this.firestore.collection("Booking").doc(this.bookID).delete();
+
+            // map the tableNo
+            this.tableNo.map((key, value) => {
+              // update Restaurant.Table.TableID based on restID
+              this.firestore.collection('Restaurant').doc(this.rest).collection('Table').doc('t0'+key).update({
+                Availability: true
+                  });
+              })
+
             this.navCtrl.navigateRoot('/tabs/booking');
 
           }

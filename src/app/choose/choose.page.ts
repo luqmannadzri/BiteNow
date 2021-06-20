@@ -29,6 +29,7 @@ export class ChoosePage implements OnInit {
   uid: string;
   restName: string;
   bookingID: string;
+  rest: any;
 
   // tableNumber: number;
   // tableAvailability: boolean;
@@ -130,14 +131,15 @@ export class ChoosePage implements OnInit {
 
             console.log("please remove");
 
-            this.booked_tables.map((tableno, index) => {
+            // this.booked_tables.map((value, index) => {
+            //   if(value==tables.tableNo){
 
-              if(tableno[index]==tables.tableNo){
+            //     this.booked_tables.splice(index,index);
 
-                this.booked_tables.splice(index,index);
-
-              }
-            })
+            //   }
+            // })
+            var index = this.booked_tables.indexOf(tables.tableNo);
+            this.booked_tables.splice(index);
           }
           console.log(this.booked_tables," tables selected");
 
@@ -145,36 +147,58 @@ export class ChoosePage implements OnInit {
 
     showAlert() {
 
-      this.firestore.collection('Booking').add(
-        {
-          date: this.date,
-          noPerson: this.seats,
-          time: this.time,
-          tableNo: ['1','2'],
-          uid: this.uid,
-          restName: this.restName,
-
-          
-        }).then(res => {
-            this.firestore.collection('Booking').doc(res.id).update(
-              {
-                bookingID: res.id
-              }
-            )
-        });
+     
 
       this.alertController.create({
-        header: 'Successful!',
-        subHeader: 'Your table has been booked',
-        message: 'Please refer to booking page and present it at the restaurant',
+        header: 'Confirm Booking?',
+        subHeader: 'Press confirm to book or cancel to abort',
+        message: 'Please refer the booking in booking page and present it at the restaurant if you confirm your booking',
         buttons: [
           {
-            text: 'Okay',
+            text: 'Confirm',
             handler: () => {
+
+              this.firestore.collection('Booking').add(
+                {
+                  date: this.date,
+                  noPerson: this.seats,
+                  time: this.time,
+                  tableNo: this.booked_tables,
+                  uid: this.uid,
+                  restName: this.restName,
+                  rest: this.restID
+        
+                  
+                }).then(res => {
+                    this.firestore.collection('Booking').doc(res.id).update(
+                      {
+                        bookingID: res.id
+                      }
+                    )
+                });
+        
+                // map the booked tables
+                this.booked_tables.map((key, value) => {
+                // update Restaurant.Table.TableID based on tableNo
+                this.firestore.collection('Restaurant').doc(this.restID).collection('Table').doc('t0'+key).update({
+                  Availability: false
+                })
+              })
+        
+            
+              
               this.navCtrl.navigateRoot('/tabs/dashboard');
             }
+            
+          },
+          {
+            text: 'Cancel',
+            // handler: () => {
+            //   this.navCtrl.back();
+            // }
           }
         ]
+
       }).then(res => {
   
         res.present();

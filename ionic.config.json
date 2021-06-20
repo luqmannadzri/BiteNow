@@ -1,5 +1,7 @@
 {
   "name": "BiteNow",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
